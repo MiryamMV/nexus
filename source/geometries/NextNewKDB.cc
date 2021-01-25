@@ -83,7 +83,7 @@ namespace nexus {
 
     const G4double mask_x = db_x;
     const G4double mask_y = db_y;
-    const G4double mask_z = 2. * mm;
+    const G4double mask_z = 4. * mm;
 
     const G4double db_case_x = db_x;
     const G4double db_case_y = db_y;

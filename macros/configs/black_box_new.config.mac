@@ -26,4 +26,4 @@
 ### JOB CONTROL
 /nexus/random_seed            -1
 /nexus/persistency/start_id   0
-/nexus/persistency/outputFile 80deg_50cm_new.next
+/nexus/persistency/outputFile 80deg_50cm_new_4mm.next
