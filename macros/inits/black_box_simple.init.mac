@@ -6,7 +6,7 @@
 /control/execute macros/physics/DefaultPhysicsList.mac
 
 /Geometry/RegisterGeometry BLACK_BOX_SIMPLE
-/Generator/RegisterGenerator SINGLE_PARTICLE_ANG
+/Generator/RegisterGenerator SINGLE_PARTICLE
 /PhysicsList/RegisterPhysics G4OpticalPhysics
 
 ### ACTIONS
