@@ -41,9 +41,7 @@ GeometryFactory::~GeometryFactory()
 #include "MagBox.h"
 #include "NextTonScale.h"
 #include "NextFlex.h"
-#include "BlackBoxSimple.h"
-#include "BlackBoxNew.h"
-#include "BlackBoxDEMO.h"
+#include "BlackBox.h"
 
 BaseGeometry* GeometryFactory::CreateGeometry() const
 {
@@ -69,11 +67,7 @@ BaseGeometry* GeometryFactory::CreateGeometry() const
 
   else if (name_ == "NEXT_DEMO") p = new NextDemo();
 
-  else if (name_ == "BLACK_BOX_SIMPLE") p = new BlackBoxSimple();
-
-  else if (name_ == "BLACK_BOX_NEW") p = new BlackBoxNew();
-
-  else if (name_ == "BLACK_BOX_DEMO") p = new BlackBoxDEMO();
+  else if (name_ == "BLACK_BOX") p = new BlackBox();
 
   else {
     G4String err = "The user selected an unknown geometry: " + name_;
