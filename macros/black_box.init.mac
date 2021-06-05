@@ -5,17 +5,23 @@
 
 /control/execute macros/physics/DefaultPhysicsList.mac
 
-/nexus/RegisterGeometry BlackBox
-/nexus/RegisterGenerator SingleParticleGenerator
-/nexus/RegisterPersistencyManager PersistencyManager
+#/nexus/RegisterGeometry BlackBox
+/Geometry/RegisterGeometry BLACK_BOX
+#/nexus/RegisterGenerator SingleParticleGenerator
+/Generator/RegisterGenerator SINGLE_PARTICLE
+#/nexus/RegisterPersistencyManager PersistencyManager
 
 /PhysicsList/RegisterPhysics G4OpticalPhysics
 
 ### ACTIONS
 
-/nexus/RegisterRunAction DefaultRunAction
-/nexus/RegisterEventAction SaveAllEventAction
-/nexus/RegisterTrackingAction OpticalTrackingAction
-/nexus/RegisterSteppingAction AnalysisSteppingAction
+#/nexus/RegisterRunAction DefaultRunAction
+#/nexus/RegisterEventAction SaveAllEventAction
+#/nexus/RegisterTrackingAction OpticalTrackingAction
+#/nexus/RegisterSteppingAction AnalysisSteppingAction
+/Actions/RegisterRunAction DEFAULT
+/Actions/RegisterEventAction SAVE_ALL
+/Actions/RegisterTrackingAction OPTICAL
+/Actions/RegisterSteppingAction ANALYSIS
 
 /nexus/RegisterMacro macros/black_box.config.mac
