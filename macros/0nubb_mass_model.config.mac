@@ -1,0 +1,30 @@
+### -----------------------------------------------------------
+### This init macro simulates 0nubb a Xe volume.
+### -----------------------------------------------------------
+
+##### VERBOSITY #####
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+/process/em/verbose 0
+
+##### GEOMETRY #####
+/Geometry/Xe_cylinder/specific_vertex  0 0 -100 cm
+/Geometry/Xe_cylinder/max_step_size 1. mm
+
+##### GENERATOR #####
+/Generator/Decay0Interface/region XENON_GAS
+/Generator/Decay0Interface/inputFile /Users/miryam/Developments/NEXT/federica/generation_test_2.txt
+#/Generator/Decay0Interface/inputFile /Users/miryam/Developments/NEXT/federica/Xe136_bb2nu_decay0.333.txt
+
+##### PHYSICS #####
+## No full simulation.
+/PhysicsList/Nexus/clustering            false
+/PhysicsList/Nexus/drift                 false
+/PhysicsList/Nexus/electroluminescence   false
+
+### JOB CONTROL
+/nexus/random_seed            -1
+/nexus/persistency/start_id   0
+/nexus/persistency/outputFile 0nubb_mass_model_test.next

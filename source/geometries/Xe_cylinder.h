@@ -1,14 +1,13 @@
 // ----------------------------------------------------------------------------
-// nexus | EPrejfac.h
+// nexus | Xe_cylinder.h
 //
-// Basic geometry of a Xe gas volume and a Cu + Steel plate to compute aprox.
-//rejection factors.
+// Basic geometry of a Xe gas volume for the mass model.
 //
 // Miryam Martínez Vara
 // ----------------------------------------------------------------------------
 
-#ifndef EP_REJ_FAC_H
-#define EP_REJ_FAC_H
+#ifndef XE_CILINDER_H
+#define XE_CILINDER_H
 
 #include "GeometryBase.h"
 
@@ -23,13 +22,13 @@ namespace nexus {
 
   class CylinderPointSampler2020;
 
-  class EPrejfac: public GeometryBase
+  class Xe_cylinder: public GeometryBase
   {
   public:
     /// Constructor
-    EPrejfac();
+    Xe_cylinder();
     /// Destructor
-    ~EPrejfac();
+    ~Xe_cylinder();
 
     /// Return vertex within region <region> of the chamber
     G4ThreeVector GenerateVertex(const G4String& region) const;
@@ -46,29 +45,22 @@ namespace nexus {
     G4double world_xy_;
     G4double diam_;
     G4double gas_length_;
-    G4double plate_length_;
     G4double pressure_;
     G4double temperature_;
     G4double sc_yield_;
     G4double e_lifetime_;
-    G4double hole_diam_front_;
-    G4double hole_diam_rear_;
-    G4double hole_length_front_;
-    G4double hole_length_rear_;
 
     //Messenger for configuration parameters
     G4GenericMessenger* msg_;
-    G4double steel_length_;
     G4ThreeVector specific_vertex_;
-
-    std::vector<G4ThreeVector> pmt_positions_;
+    //Step size
+    G4double max_step_size_;
 
     // Geometry Navigator
     G4Navigator* geom_navigator_;
 
     // Vertex generators
-    CylinderPointSampler2020* copper_gen_;
-    CylinderPointSampler2020* steel_gen_;
+    CylinderPointSampler2020* xe_gen_;
 
   };
 
