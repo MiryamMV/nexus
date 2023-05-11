@@ -1,21 +1,22 @@
 ### --------------------------------------------------------
-### This init macro simulates Tl disintegrations in the EP.
+### This init macro simulates Tl decays in the EP.
 ### --------------------------------------------------------
 
 /control/execute macros/physics/DefaultPhysicsList.mac
 
 /nexus/RegisterGeometry EPrejfac
-#/nexus/RegisterGenerator LambertianGenerator
-#/nexus/RegisterGenerator IonGenerator
-/nexus/RegisterGenerator Decay0Interface
+/nexus/RegisterGenerator IonGenerator
 /nexus/RegisterPersistencyManager PersistencyManager
 
-/PhysicsList/RegisterPhysics G4OpticalPhysics
+/PhysicsList/RegisterPhysics NexusPhysics
+/PhysicsList/RegisterPhysics G4StepLimiterPhysics
 
 ### ACTIONS
-
+/nexus/RegisterEventAction DefaultEventAction
 /nexus/RegisterRunAction DefaultRunAction
-/nexus/RegisterTrackingAction OpticalTrackingAction
-/nexus/RegisterSteppingAction AnalysisSteppingAction
+/nexus/RegisterTrackingAction DefaultTrackingAction
+#/nexus/RegisterTrackingAction ValidationTrackingAction
+#/nexus/RegisterSteppingAction AnalysisSteppingAction
+#/nexus/RegisterSteppingAction SaveAllSteppingAction
 
 /nexus/RegisterMacro macros/EP_plates.config.mac
