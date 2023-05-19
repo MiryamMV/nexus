@@ -1,15 +1,22 @@
 ### --------------------------------------------------------
-### This init macro simulates Tl decays in the EP.
+### This init macro simulates Tl and Bi decays in the EP.
 ### --------------------------------------------------------
 
-/control/execute macros/physics/DefaultPhysicsList.mac
+#/control/execute macros/physics/DefaultPhysicsList.mac
 
-/nexus/RegisterGeometry EPrejfac
-/nexus/RegisterGenerator IonGenerator
-/nexus/RegisterPersistencyManager PersistencyManager
+/PhysicsList/RegisterPhysics G4EmStandardPhysics_option4
+/PhysicsList/RegisterPhysics G4DecayPhysics
+/PhysicsList/RegisterPhysics G4RadioactiveDecayPhysics
 
 /PhysicsList/RegisterPhysics NexusPhysics
 /PhysicsList/RegisterPhysics G4StepLimiterPhysics
+
+/nexus/RegisterGeometry EPrejfac
+
+/nexus/RegisterGenerator IonGenerator
+
+/nexus/RegisterPersistencyManager PersistencyManager
+
 
 ### ACTIONS
 /nexus/RegisterEventAction DefaultEventAction
@@ -20,3 +27,5 @@
 #/nexus/RegisterSteppingAction SaveAllSteppingAction
 
 /nexus/RegisterMacro macros/EP_plates.config.mac
+# this delayed macro is necessary only when Bi-214 is simulated
+/nexus/RegisterDelayedMacro macros/physics/Bi214.mac

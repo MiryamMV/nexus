@@ -1,27 +1,44 @@
 ### -----------------------------------------------------------
-### This init macro simulates Tl decays in the EP.
+### This init macro simulates Tl and Bi decays in the EP.
 ### -----------------------------------------------------------
 
-##### GENERATOR #####
-/Generator/IonGenerator/atomic_number 81
-/Generator/IonGenerator/mass_number 208
-#/Generator/IonGenerator/region STEEL_PLATE
-/Generator/IonGenerator/region Cu_PLATE
+##### VERBOSITY #####
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
 
-/Geometry/EPrejfac/steel_length 0. cm
+/process/em/verbose 0
+
+##### GEOMETRY #####
+/Geometry/EPrejfac/steel_length 6. cm
 /Geometry/EPrejfac/specific_vertex  0 0 -100 cm
 
-/Actions/DefaultEventAction/min_energy 2.3 MeV
+##### GENERATOR #####
+#Tl-208
+#/Generator/IonGenerator/atomic_number 81
+#/Generator/IonGenerator/mass_number 208
+#Bi-214
+/Generator/IonGenerator/atomic_number 83
+/Generator/IonGenerator/mass_number 214
+/Generator/IonGenerator/region STEEL_PLATE
+#/Generator/IonGenerator/region Cu_PLATE
+
+##### PHYSICS #####
+ ## No full simulation.
+ /PhysicsList/Nexus/clustering            false
+ /PhysicsList/Nexus/drift                 false
+ /PhysicsList/Nexus/electroluminescence   false
+
+##### ACTIONS #####
+/Actions/DefaultEventAction/min_energy 2.4 MeV
+/Actions/DefaultEventAction/max_energy 2.5 MeV
 #/Actions/SaveAllSteppingAction/select_particle e-
 #/Actions/SaveAllSteppingAction/select_particle gamma
 #/Actions/SaveAllSteppingAction/select_volume XENON_GAS
 
-/run/verbose 0
-/event/verbose 0
-/tracking/verbose 0
-/process/em/verbose 0
-
 ### JOB CONTROL
 /nexus/random_seed            -1
 /nexus/persistency/start_id   0
-/nexus/persistency/outputFile EP_plates.next
+#para el Bi
+/nexus/persistency/eventType background
+/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/rejection_factors/rfst6bienergy2years.next

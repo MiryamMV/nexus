@@ -127,6 +127,11 @@ namespace nexus {
     new G4PVPlacement(nullptr, G4ThreeVector(0,0,-gas_length_/2.), gas_logic_vol,
                       gas_name, world_logic_vol,false, 0, false);
 
+  /// Set the volume as an ionization sensitive detector
+  IonizationSD* ionisd = new IonizationSD("/XENON_GAS");
+  gas_logic_vol->SetSensitiveDetector(ionisd);
+  G4SDManager::GetSDMpointer()->AddNewDetector(ionisd);
+
   // Cu PLATE //////////////////////////////////////////////
 
   G4String cu_name = "Cu_PLATE";
