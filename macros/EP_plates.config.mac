@@ -1,5 +1,5 @@
 ### -----------------------------------------------------------
-### This init macro simulates Tl and Bi decays in the EP.
+### This config macro simulates Tl and Bi decays in the EP.
 ### -----------------------------------------------------------
 
 ##### VERBOSITY #####
@@ -41,4 +41,4 @@
 /nexus/persistency/start_id   0
 #para el Bi
 /nexus/persistency/eventType background
-/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/rejection_factors/rfst6bienergy2years.next
+/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/rejection_factors/bi_test.next
