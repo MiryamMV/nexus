@@ -10,7 +10,7 @@
 /process/em/verbose 0
 
 ##### GEOMETRY #####
-/Geometry/EPrejfac/steel_length 6. cm
+/Geometry/EPrejfac/steel_length 12. cm
 /Geometry/EPrejfac/specific_vertex  0 0 -100 cm
 
 ##### GENERATOR #####
@@ -41,4 +41,4 @@
 /nexus/persistency/start_id   0
 #para el Bi
 /nexus/persistency/eventType background
-/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/rejection_factors/bi_test.next
+/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/rejection_factors/bi_test_nocopper.next

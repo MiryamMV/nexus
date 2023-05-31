@@ -133,31 +133,31 @@ namespace nexus {
   G4SDManager::GetSDMpointer()->AddNewDetector(ionisd);
 
   // Cu PLATE //////////////////////////////////////////////
+  if (steel_length_ < 12) {
+    G4String cu_name = "Cu_PLATE";
 
-  G4String cu_name = "Cu_PLATE";
+    G4Material* cu_mat = G4NistManager::Instance()->FindOrBuildMaterial("G4_Cu");
 
-  G4Material* cu_mat = G4NistManager::Instance()->FindOrBuildMaterial("G4_Cu");
+    //2 separate plates
+    G4Tubs* cu_solid_vol =
+      new G4Tubs(cu_name, 0, diam_/2., (plate_length_-steel_length_)/2., 0, twopi);
 
-  //2 separate plates
-  G4Tubs* cu_solid_vol =
-    new G4Tubs(cu_name, 0, diam_/2., (plate_length_-steel_length_)/2., 0, twopi);
+    //For steel inserted in the copper.
+    //G4Tubs* cu_solid_vol =
+    //  new G4Tubs(cu_name, 0, diam_/2., (plate_length_-steel_length_)/2., 0, twopi);
 
-  //For steel inserted in the copper.
-  //G4Tubs* cu_solid_vol =
-  //  new G4Tubs(cu_name, 0, diam_/2., (plate_length_-steel_length_)/2., 0, twopi);
-
-  G4LogicalVolume* cu_logic_vol =
-    new G4LogicalVolume(cu_solid_vol, cu_mat, cu_name);
+    G4LogicalVolume* cu_logic_vol =
+      new G4LogicalVolume(cu_solid_vol, cu_mat, cu_name);
 
     G4VisAttributes cu_col = nexus::CopperBrown();
     cu_logic_vol->SetVisAttributes(cu_col);
 
-  //2 separate plates
+    //2 separate plates
     G4VPhysicalVolume* cu_phys = new G4PVPlacement(nullptr, G4ThreeVector(0,0,(plate_length_-steel_length_)/2.),
                                                    cu_logic_vol, cu_name, world_logic_vol,false, 0, false);
 
-  // VERTEX GENERATORS
-    copper_gen_ = new CylinderPointSampler2020(cu_phys);
+    // VERTEX GENERATORS
+    copper_gen_ = new CylinderPointSampler2020(cu_phys);}
 
   // Steel PLATE //////////////////////////////////////////////
 
