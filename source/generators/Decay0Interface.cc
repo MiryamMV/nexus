@@ -74,7 +74,7 @@ void Decay0Interface::OpenInputFile(G4String filename)
 
   if (file_.good()) {
     opened_ = true;
-    ProcessHeader();
+    //ProcessHeader();
   }
   else {
     G4Exception("[Decay0Interface]", "SetInputFile()", JustWarning,
@@ -141,11 +141,13 @@ void Decay0Interface::GeneratePrimaryVertex(G4Event* event)
   //G4cout << "GeneratePrimaryVertex()" << G4endl;
 
   // reading event-related information
+  G4String isotope;  // isotope
   G4int entries;     // number of particles in the event
   G4long evt_no;     // event number
   G4double evt_time; // initial time in seconds
 
-  file_ >> evt_no >> evt_time >> entries;
+  file_ >> evt_no >> evt_time >> isotope;
+  file_ >> entries;
 
 
   // abort if end-of-file was reached in last operation
@@ -171,6 +173,9 @@ void Decay0Interface::GeneratePrimaryVertex(G4Event* event)
     G4double px, py, pz;    // Momentum components in MeV
 
     file_ >> g3code >> px >> py >> pz >> particle_time;
+
+    G4String line;
+    getline(file_, line);
 
     G4ParticleDefinition* g4code =
       G4ParticleTable::GetParticleTable()->FindParticle(G3toPDG(g3code));

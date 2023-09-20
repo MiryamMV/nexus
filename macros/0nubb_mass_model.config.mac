@@ -10,13 +10,14 @@
 /process/em/verbose 0
 
 ##### GEOMETRY #####
-/Geometry/Xe_cylinder/specific_vertex  0 0 -100 cm
+/Geometry/Xe_cylinder/specific_vertex  0 0 0 mm
 /Geometry/Xe_cylinder/max_step_size 1. mm
 
 ##### GENERATOR #####
-/Generator/Decay0Interface/region XENON_GAS
-/Generator/Decay0Interface/inputFile /Users/miryam/Developments/NEXT/federica/generation_test_2.txt
-#/Generator/Decay0Interface/inputFile /Users/miryam/Developments/NEXT/federica/Xe136_bb2nu_decay0.333.txt
+/Generator/Decay0Interface/region AD_HOC
+#/Generator/Decay0Interface/region XENON_GAS
+#/Generator/Decay0Interface/inputFile /Users/miryam/Developments/NEXT/0nubb_models/generation/mir_fed_1000_mass_model.txt
+/Generator/Decay0Interface/inputFile /Users/miryam/Developments/NEXT/0nubb_models/generation/1000_Xe136_mode1_decay0.d0t
 
 ##### PHYSICS #####
 ## No full simulation.
@@ -27,4 +28,5 @@
 ### JOB CONTROL
 /nexus/random_seed            -1
 /nexus/persistency/start_id   0
-/nexus/persistency/outputFile 0nubb_mass_model_test.next
+#/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/0nubb_models/h5files/0nubb_mass_model_mir_fed_1000_center.next
+/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/0nubb_models/h5files/0nubb_mass_model_decay0_1000_center.next

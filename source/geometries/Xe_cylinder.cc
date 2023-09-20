@@ -46,7 +46,7 @@ namespace nexus {
     GeometryBase(),
     world_z_ (5. * m),
     world_xy_ (5. *m),
-    diam_ (2600. * mm), 
+    diam_ (2600. * mm),
     gas_length_ (2600. *mm),
     pressure_(15. * bar),
     temperature_(293. * kelvin),
@@ -111,7 +111,9 @@ namespace nexus {
   G4VisAttributes gas_col = nexus::LightBlue();
   gas_logic_vol->SetVisAttributes(gas_col);
 
-  G4VPhysicalVolume* xe_phys =  new G4PVPlacement(nullptr, G4ThreeVector(0,0,-gas_length_/2.),
+  // creo que esta linea de codigo esta mal, debería estar posicionado en 0,0,0.
+  //G4VPhysicalVolume* xe_phys =  new G4PVPlacement(nullptr, G4ThreeVector(0,0,-gas_length_/2.),
+  G4VPhysicalVolume* xe_phys =  new G4PVPlacement(nullptr, G4ThreeVector(0,0,0),
                                                   gas_logic_vol, gas_name, world_logic_vol,
                                                   false, 0, false);
 
