@@ -334,13 +334,13 @@ void NextFlexTrackingPlane::BuildTeflon()
   G4String teflon_wls_name = "TP_TEFLON_WLS";
 
   G4double teflon_wls_posZ = teflon_thickness_/2. - wls_thickness_/2.;
- 
+
   G4Tubs* teflon_wls_nh_solid =
     new G4Tubs(teflon_wls_name + "_NOHOLE", 0., diameter_/2.,
 	       wls_thickness_/2., 0, twopi);
 
   // Making the TEFLON_WLS holes (a little bit thicker to prevent subtraction problems)
-  G4Tubs* wls_hole_solid = 
+  G4Tubs* wls_hole_solid =
     new G4Tubs(teflon_wls_name + "_HOLE", 0., teflon_hole_diam_/2.,
 	       wls_thickness_/2. + 0.5*mm, 0, twopi);
 
@@ -348,12 +348,12 @@ void NextFlexTrackingPlane::BuildTeflon()
 
   for (G4int i=0; i<num_SiPMs_; i++){
     G4Transform3D wls_hole_transform = G4Transform3D(rotm, SiPM_positions_[i]);
-    wls_holes_solid->AddNode(*wls_hole_solid, wls_hole_transform); 
+    wls_holes_solid->AddNode(*wls_hole_solid, wls_hole_transform);
   }
   wls_holes_solid->Voxelize();
 
-  G4SubtractionSolid* teflon_wls_solid = 
-    new G4SubtractionSolid(teflon_wls_name, teflon_wls_nh_solid, wls_holes_solid);	  
+  G4SubtractionSolid* teflon_wls_solid =
+    new G4SubtractionSolid(teflon_wls_name, teflon_wls_nh_solid, wls_holes_solid);
 
   G4LogicalVolume* teflon_wls_logic =
     new G4LogicalVolume(teflon_wls_solid, wls_mat_, teflon_wls_name);
@@ -403,7 +403,7 @@ void NextFlexTrackingPlane::BuildSiPMs()
   G4MaterialPropertiesTable* photosensor_mpt = new G4MaterialPropertiesTable();
   G4double energy[]       = {0.2 * eV, 3.5 * eV, 3.6 * eV, 11.5 * eV};
   G4double reflectivity[] = {0.0     , 0.0     , 0.0     ,  0.0     };
-  G4double efficiency[]   = {1.0     , 1.0     , 0.0     ,  0.0     };
+  G4double efficiency[]   = {1.0     , 1.0     , 1.0     ,  1.0     };
   photosensor_mpt->AddProperty("REFLECTIVITY", energy, reflectivity, 4);
   photosensor_mpt->AddProperty("EFFICIENCY",   energy, efficiency,   4);
   SiPM_->SetOpticalProperties(photosensor_mpt);
@@ -439,10 +439,10 @@ void NextFlexTrackingPlane::BuildSiPMs()
     sipm_pos.setZ(SiPM_pos_z);
     new G4PVPlacement(nullptr, sipm_pos, SiPM_logic, SiPM_logic->GetName(),
 		      mother_logic_, true, SiPM_id, sipm_verbosity_);
-    if (sipm_verbosity_) 
-      G4cout << "* TP_SiPM " << SiPM_id << " position: " 
+    if (sipm_verbosity_)
+      G4cout << "* TP_SiPM " << SiPM_id << " position: "
 	     << sipm_pos << G4endl;
-  }	  
+  }
 }
 
 
