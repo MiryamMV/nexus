@@ -57,11 +57,11 @@
 /Geometry/NextFlex/tp_teflon_hole_diam   7. mm
 /Geometry/NextFlex/tp_wls_mat           TPB
 /Geometry/NextFlex/tp_kapton_anode_dist 12. mm
-/Geometry/NextFlex/tp_sipm_sizeX        1. mm # ORIGINAL 1.3 mm
-/Geometry/NextFlex/tp_sipm_sizeY        1. mm # ORIGINAL 1.3 mm
+/Geometry/NextFlex/tp_sipm_sizeX        6. mm # ORIGINAL 1.3 mm
+/Geometry/NextFlex/tp_sipm_sizeY        6. mm # ORIGINAL 1.3 mm
 /Geometry/NextFlex/tp_sipm_sizeZ        2.0 mm
-/Geometry/NextFlex/tp_sipm_pitchX       3.16 mm # ORIGINAL 15. mm
-/Geometry/NextFlex/tp_sipm_pitchY       3.16 mm
+/Geometry/NextFlex/tp_sipm_pitchX       18.97 mm # ORIGINAL 15. mm
+/Geometry/NextFlex/tp_sipm_pitchY       18.97 mm
 /Geometry/NextFlex/tp_sipm_time_binning 1.  microsecond
 
 # ICS
@@ -111,4 +111,4 @@
 ### CONTROL
 /nexus/random_seed            -1
 /nexus/persistency/start_id   0
-/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/manchester/coverage/h5files/center_1000_1mm_3.16mm_10cov.next
+/nexus/persistency/outputFile /Users/miryam/Developments/NEXT/manchester/coverage/h5files/center_1000_6mm_18.97mm_10cov.next
